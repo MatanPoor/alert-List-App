@@ -1,0 +1,35 @@
+
+<div class="allItemsWarpper">
+    
+    <div *ngFor="let i of items$|async; " class="checkBox">
+            
+            <div class="itemWarpper">
+                <div class="items">
+                    <h3>Name:</h3>
+                    <p>{{i.name}}</p>
+                </div>
+
+                <div class="items">
+                    <h3>Description:</h3>
+                    <p>{{i.description}}</p>
+                </div >
+                <div class="items">
+                    <h3>Added Date:</h3>
+                    <p>{{i.addedDate | date:"yyyy/MM/dd"}}</p>
+                </div>
+                <div class="items">
+                    <h3>Starting Date:</h3>
+                    <p>{{i.startingDate | date:"yyyy/MM/dd"}}</p>
+                </div>
+
+                <div class="items">
+                    <h3>Ending Date:</h3>
+                    <p>{{i.endingDate| date:"yyyy/MM/dd"}}</p>
+                </div>
+
+                <div class="deleteBtn" >
+                    <button routerLink="alerts" (click)="deleteItem(i)">Delete</button>
+                </div>
+            </div>
+    </div>
+</div>

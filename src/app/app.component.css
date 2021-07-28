@@ -1,0 +1,12 @@
+
+:host {
+    display: grid;
+    grid-template-rows: auto auto auto auto 1fr;
+}
+
+.title{
+    background-color: rgb(27, 129, 163);
+    text-align: center;
+    padding: 9px;
+    color: white;
+}

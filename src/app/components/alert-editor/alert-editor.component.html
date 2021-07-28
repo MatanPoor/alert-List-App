@@ -1,0 +1,44 @@
+
+<div class="formWarper"  >
+    <div class="form" *ngIf="form" [formGroup]="form" (ngSubmit)="form.valid">
+        <div class="form-field" *ngIf="get('name') as field">
+            <label>Name</label>
+            <input #name type="text" formControlName="name">
+            <app-errors-presenter [errors]="field.errors"></app-errors-presenter>
+        </div>
+
+        <div class="form-field" *ngIf="get('description') as field">
+            <label>Descrption</label>
+            <textarea #description rows="4" formControlName="description"></textarea>
+            <app-errors-presenter [errors]="field.errors"></app-errors-presenter>
+        </div>
+        
+        <div [hidden] class="form-field" *ngIf="get('addedDate') as field">
+            <label>Added Date</label>
+            <ngx-datepicker formControlName="addedDate" [options]="options"></ngx-datepicker>
+            <app-errors-presenter [errors]="field.errors"></app-errors-presenter>
+        </div>
+
+        <div class="form-field" *ngIf="get('startingDate') as field">
+            <label>Start</label>
+                <ngx-datepicker  #datePiked formControlName="startingDate"  [options]="options"></ngx-datepicker>
+                <app-errors-presenter [errors]="field.errors"></app-errors-presenter> 
+        </div>
+
+        <div class="form-field"  *ngIf="get('endingDate') as field">
+                <label>End Calc</label>
+                <select  #dateOrDays (change)="choseDateOrDay()">
+                    <option value="date">By Date</option>
+                    <option value="days">By Days</option>
+                </select>
+             
+                <div class="chose">
+                <ngx-datepicker  *ngIf="isByDate"  formControlName="endingDate" [options]="options"></ngx-datepicker>
+                <input placeholder="enter number of days" #days type="number"  min="1"  *ngIf="!isByDate" formControlName="endingDate">
+                </div>
+                <app-errors-presenter [errors]="field.errors"></app-errors-presenter>
+        </div>
+    </div>
+    <button [disabled]="form.invalid"  type="submit" (click)="onGo()">Save Alert</button>
+    
+</div>
